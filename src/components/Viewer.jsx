@@ -88,6 +88,15 @@ function Viewer() {
   return (
     <>
       <h2>Viewer</h2>
+      {/* Connection status */}
+      <div style={{ margin: "8px 0", fontWeight: "bold" }}>
+        Status:{" "}
+        {connected
+          ? "Connected"
+          : remoteStream
+          ? "Receiving stream..."
+          : "Not connected"}
+      </div>
       <textarea
         name="broadcaster-peer-id"
         id="broadcaster-peer-id"

@@ -75,6 +75,10 @@ function BroadCaster() {
   return (
     <>
       <h2>Broadcaster</h2>
+      {/* Broadcasting status */}
+      <div style={{ margin: "8px 0", fontWeight: "bold" }}>
+        Status: {isBroadcasting ? "Broadcasting" : "Not broadcasting"}
+      </div>
       <div>
         <button onClick={handleStartBroadcast} disabled={isBroadcasting}>
           Start Broadcast
@@ -104,6 +108,5 @@ function BroadCaster() {
     </>
   );
 }
-
 
 export default BroadCaster;
