@@ -41,6 +41,17 @@ button.hangup:hover {
   background-color: #a71d2a;
 }
 
+button:disabled {
+  background-color: #b3d1fa; /* Light blue for Connect/Start Broadcast */
+  color: #e6e6e6;
+  cursor: not-allowed;
+}
+
+button.hangup:disabled {
+  background-color: #f5b5bb; /* Light red for Hang Up */
+  color: #e6e6e6;
+}
+
 /* Textarea */
 textarea {
   margin-top: 12px;

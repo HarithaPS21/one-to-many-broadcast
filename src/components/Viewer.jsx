@@ -65,6 +65,7 @@ function Viewer() {
   const handleHangup = () => {
     setConnected(false);
     setRemoteStream(null);
+    setBroadcasterId(""); // Reset the textarea
     if (callRef.current) {
       callRef.current.close();
       callRef.current = null;

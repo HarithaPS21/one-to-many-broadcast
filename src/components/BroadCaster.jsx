@@ -105,6 +105,5 @@ function BroadCaster() {
   );
 }
 
-// No changes needed; the broadcaster only sends its stream to viewers.
 
 export default BroadCaster;
