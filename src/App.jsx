@@ -2,6 +2,8 @@ import { useState } from 'react'
 import './App.css';
 import Viewer from './components/Viewer';
 import BroadCaster from './components/Broadcaster';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   const [mode, setMode] = useState(null);
@@ -19,6 +21,7 @@ function App() {
       }
       {mode === "broadcast" && <BroadCaster />}
       {mode === "viewer" && <Viewer />}
+      <ToastContainer autoClose={1000} position='top-right' />
     </div>
   )
 }

@@ -1,5 +1,6 @@
 import { useRef, useState, useEffect } from "react";
 import Peer from "peerjs";
+import { toast } from "react-toastify";
 
 function Viewer() {
   const [broadcasterId, setBroadcasterId] = useState("");
@@ -40,24 +41,27 @@ function Viewer() {
       if (call) {
         call.on("stream", (remoteStream) => {
           setRemoteStream(remoteStream);
+          toast.success("Connected to broadcaster!");
           setConnected(true);
         });
         call.on("close", () => {
           setConnected(false);
           setRemoteStream(null);
+          toast.info("Connection closed.");
         });
         call.on("error", () => {
           setConnected(false);
           setRemoteStream(null);
+          toast.error("Stream error.");
         });
       } else {
-        alert("Could not connect. The broadcaster may not be streaming yet or the Peer ID is incorrect.");
+        toast.error("Could not connect. The broadcaster may not be streaming yet or the Peer ID is incorrect.");
         setConnected(false);
       }
     });
 
     peer.on("error", (err) => {
-      alert("PeerJS error: " + err);
+      toast.error("PeerJS error: " + err);
       setConnected(false);
     });
   };
@@ -74,6 +78,7 @@ function Viewer() {
       peerRef.current.destroy();
       peerRef.current = null;
     }
+    toast.info("Disconnected.");
   };
 
   useEffect(() => {

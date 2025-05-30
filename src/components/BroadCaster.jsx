@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import Peer from "peerjs";
+import { toast } from "react-toastify";
 
 function BroadCaster() {
   const [peerId, setPeerId] = useState("");
@@ -40,6 +41,7 @@ function BroadCaster() {
   const handleCopy = () => {
     if (peerId) {
       navigator.clipboard.writeText(peerId);
+      toast.success("Peer ID copied!");
     }
   };
 
@@ -54,8 +56,9 @@ function BroadCaster() {
         localVideoRef.current.srcObject = stream;
       }
       setIsBroadcasting(true);
+      toast.info("Broadcast started!");
     } catch (err) {
-      alert("Could not access camera/microphone.");
+      toast.error("Could not access camera/microphone.");
     }
   };
 
@@ -70,6 +73,7 @@ function BroadCaster() {
     }
     callsRef.current.forEach((call) => call.close());
     callsRef.current = [];
+    toast.info("Broadcast stopped.");
   };
 
   return (
